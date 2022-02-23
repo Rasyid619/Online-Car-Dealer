@@ -1,20 +1,20 @@
 [
   {
-    "type": "Convertible"
+    "name": "Convertible"
   },
   {
-    "type": "Pick Up"
+    "name": "Pick Up"
   },
   {
-    "type": "Van / Mini Bus"
+    "name": "Van / Mini Bus"
   },
   {
-    "type": "Off Roader"
+    "name": "Off Roader"
   },
   {
-    "type": "SUV (Sport Utility Vehicle"
+    "name": "SUV (Sport Utility Vehicle"
   },
   {
-    "type": " MPV (Multi Purposes Vehicle)"
+    "name": " MPV (Multi Purposes Vehicle)"
   }
 ]

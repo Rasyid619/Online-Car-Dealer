@@ -1,26 +1,17 @@
 [
   {
-    "firstName":"Angele",
-  "lastName":"Hugland",
   "email":"ahugland0@posterous.com",
-  "phoneNumber":"335-509-9055",
-  "gender":"Female",
-  "birtDate":"7/13/1994"
+  "password":"FNktRX2w59y",
+  "ProfileId":1
 },
 {
-  "firstName":"Ambros",
-  "lastName":"Rudsdell",
   "email":"arudsdell1@ifeng.com",
-  "phoneNumber":"933-397-9993",
-  "gender":"Female",
-  "birtDate":"2/24/1986"
+  "password":"P3oJPw63sJaZ",
+  "ProfileId":2
 },
 {
-  "firstName":"Millard",
-  "lastName":"McReidy",
   "email":"mmcreidy2@engadget.com",
-  "phoneNumber":"771-504-2887",
-  "gender":"Male",
-  "birtDate":"11/9/1974"
+  "password":"s0IRP4w",
+  "ProfileId":3
   }
 ]
