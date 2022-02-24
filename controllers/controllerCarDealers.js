@@ -34,25 +34,29 @@ class Controller {
 			})
 	}
 
+     static getCarCategories(req,res){
+        Category.findAll()
+        .then(result => {
+            res.send(result)
+        })
+        .catch((err) => {
+            res.send(err)
+        })
+     }
+
 	static getCarDealers(req, res) {
-		Car.findAll()
-			.then(result => {
-				res.send(result)
-			})
-			.catch((err) => {
-				res.send(err)
-			})
+        Car.findAll({
+            include: Category
+        })
+        .then(car =>{
+            res.render('./carDealers/cards', {car, title: 'Cars Category'})
+        })
+        .catch((err) =>{
+            res.send(err)
+        })
+    }
 	}
 
-	static getCarCategories(req, res) {
-		Category.findAll()
-			.then(result => {
-				res.send(result)
-			})
-			.catch((err) => {
-				res.send(err)
-			})
-	}
-}
+  
 
 module.exports = Controller

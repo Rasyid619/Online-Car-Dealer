@@ -9,6 +9,7 @@ const routerUserProfile = require('./routerUserProfile')
 router.get('/', Controller.getHome)
 router.get('/register', ControllerUser.getRegisterForm)
 router.post('/register', ControllerUser.postRegisterForm)
+
 router.get('/login', Controller.getLogin)
 router.post('/login', Controller.postLogin)
 
@@ -17,7 +18,7 @@ router.use((req, res, next) => {
   next()
 })
 
-router.use('/car', routerCarDealers)
+router.use('/cars', routerCarDealers)
 router.use('/users', routerUserProfile)
 
 

@@ -47,6 +47,7 @@ class Controller {
       email,
       password
     }
+
     User.create(newUser)
       .then((user) => {
         let newProfile = {
@@ -67,6 +68,19 @@ class Controller {
         console.log(err)
         res.send(err)
       })
+  }
+
+  static getEditFormProfiles(req,res){
+    let {profileId} = req.params 
+
+    Profile.findByPk(profileId)
+    .then(profile => {
+      res.render('./profiles/profileForm',{profile,title: "Edit Profile"})
+    })
+    .catch((err) => {
+      res.send(err)
+    })
+    
   }
 
 }
