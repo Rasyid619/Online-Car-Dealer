@@ -8,7 +8,7 @@ class Controller {
     })
       .then(user => {
 
-        res.render('./users/usersData', {
+        res.render('./usersProfile/allUsersersData', {
           user,
           title: 'Data User'
         })
@@ -18,34 +18,36 @@ class Controller {
       })
   }
 
-  static getUserProfiles(req, res) {
-    let { profileId } = req.params
-    Profile.findByPk(profileId)
-      .then(profile => {
-        res.render('./profiles/profilesData', {
-          profile,
-          title: 'Data profile'
-        })
-      })
-      .catch((err) => {
-        res.send(err)
-      })
+  static getUserById(req, res) {
+    let {userId} = req.params
+
+    User.findByPk(userId, {
+      include : Profile
+    })
+    .then(user => {
+      // res.send(user)
+      res.render('./usersProfile/userData', {title: 'User Data', user})
+    })
+
   }
+
 
   static getRegisterForm(req, res) {
     User.findAll()
       .then((user) => {
-        res.render('./users/registerForm', { user, title: 'Add Profile' })
+        res.render('./usersProfile/registerForm', { user, title: 'Add Profile' })
       })
   }
 
   static postRegisterForm(req, res) {
-    let { userName, email, password, confirmPassword, firstName, lastName, phoneNumber, gender, birthDate } = req.body
-
+    let { userName, email, password, confirmPassword, firstName, lastName, phoneNumber, gender, birthDate , role} = req.body
+    console.log(req.boy)
+    
     let newUser = {
       userName,
       email,
-      password
+      password,
+      role
     }
 
     User.create(newUser)
@@ -62,7 +64,7 @@ class Controller {
         return Profile.create(newProfile)
       })
       .then(() => {
-        res.redirect('/users')
+        res.redirect('/login')
       })
       .catch(err => {
         console.log(err)
@@ -71,11 +73,13 @@ class Controller {
   }
 
   static getEditFormProfiles(req,res){
-    let {profileId} = req.params 
-
-    Profile.findByPk(profileId)
-    .then(profile => {
-      res.render('./profiles/profileForm',{profile,title: "Edit Profile"})
+    let {userId, profileId} = req.params 
+    User.findByPk(userId, {
+      include: Profile,
+      where: {id: profileId}
+    })
+    .then(user => {
+      res.render('./usersProfile/profileForm',{user,title: "Edit Profile"})
     })
     .catch((err) => {
       res.send(err)
@@ -83,21 +87,10 @@ class Controller {
     
   }
 
-  static getEditFormProfiles(req,res){
-   console.log(req.params);
-
-    // Profile.findByPk(profileId)
-    // .then(profile => {
-    //   res.render('./profiles/profileForm',{profile,title: "Edit Profile"})
-    // })
-    // .catch((err) => {
-    //   res.send(err)
-    // })
-    
-  }
 
   static postEditProfiles(req,res){
-    let {profileId} = req.params.profileId
+    let { userId ,profileId} = req.params
+    console.log(profileId)
     let {firstName, lastName, phoneNumber, gender, birthDate, email} = req.body
     let newProfile = {
       firstName,
@@ -114,7 +107,8 @@ class Controller {
       }
     })
     .then(() => {
-      res.redirect(`/users/profiles/${profileId}`)
+      // res.send(`berhasil edit`)
+      res.redirect(`/users/${userId}`)
     })
     .catch(err => {
       res.send(err)
@@ -123,29 +117,16 @@ class Controller {
   
   static deleteAccount(req, res) {
     
-    let {profileId} = req.params 
+    let {userId} = req.params 
 
-    Profile.destroy({
+    User.destroy({
       where:{
-        id : profileId
-      }
-     
+        id : userId
+      } 
     })
     .then(() =>{
-    
+      res.redirect('/login')
     })
-  
-    // Profile.findByPk()
-    //     .then(result=>{
-          
-    //         return result.destroy()
-    //     })
-    //     .then(()=>{
-    //         res.redirect(`/incubators/${idIncubator}`)
-    //     })
-    //     .catch(err=>{
-    //         res.send(err)
-    //     })
   
 }
 }

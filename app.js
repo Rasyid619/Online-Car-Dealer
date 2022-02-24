@@ -8,7 +8,7 @@ app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
 
 app.use(session({
-  secret: 'Everyone has one or two secret',
+	secret: 'Everyone has one or two secret',
   resave: false,
   saveUninitialized: false,
 	cookie: { 
@@ -17,8 +17,8 @@ app.use(session({
 	}
 }))
 
-
 app.use(router)
+
 
 
 

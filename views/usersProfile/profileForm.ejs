@@ -8,32 +8,32 @@
     <form method="post">
         <div class="container mb-3">
             <label for="firstName" class="form-label">First Name</label>
-            <input type="text" class="form-control" id="firstName" name="firstName" value="<%= profile.firstName %>">
+            <input type="text" class="form-control" id="firstName" name="firstName" value="<%= user.Profile.firstName %>">
           </div>
           <div class="container mb-3">
             <label for="lastName" class="form-label">last Name</label>
-            <input type="text" class="form-control" id="lastName" name="lastName" value="<%= profile.lastName %>  ">
+            <input type="text" class="form-control" id="lastName" name="lastName" value="<%= user.Profile.lastName %>  ">
           </div>
         <div class="container mb-3">
           <label for="email" class="form-label">Email address</label>
-          <input type="email" class="form-control" id="email" name="email" value="<%= profile.email %> " >
+          <input type="email" class="form-control" id="email" name="email" value="<%= user.Profile.email %> " >
         </div>
         <div class="container mb-3">
             <label for="phoneNumber" class="form-label">Phone Number</label>
-            <input type="number" class="form-control" id="phoneNumber" name="phoneNumber" value="<%= profile.phoneNumber %>" >
+            <input type="number" class="form-control" id="phoneNumber" name="phoneNumber" value="<%= user.Profile.phoneNumber %>" >
           </div>
           <div class="container mb-3">
             <label for="gender" class="form-label">Gender</label>
             <select class="form-select" name="gender">
               
-                <option value="male"<%= profile.gender === "male" ? "selected": "" %>>Male</option>
-                <option value="female" <%= profile.gender === "female" ? "selected": "" %>>Female</option>
-                <option value="others" <%= profile.gender === "others" ? "selected": "" %>>Others</option>
+                <option value="male"<%= user.Profile.gender === "male" ? "selected": "" %>>Male</option>
+                <option value="female" <%= user.Profile.gender === "female" ? "selected": "" %>>Female</option>
+                <option value="others" <%= user.Profile.gender === "others" ? "selected": "" %>>Others</option>
               </select>
           </div>
           <div class="container mb-3">
             <label for="birthDate" class="form-label">Birth Date</label>
-            <input type="date" class="form-control" id="birthDate" name="birthDate" value="<%= profile.formatedDate %>" >
+            <input type="date" class="form-control" id="birthDate" name="birthDate" value="<%= user.Profile.formatedDate %>" >
           </div>
 
         <div class="container mb-3">

@@ -50,7 +50,10 @@ module.exports = (sequelize, DataTypes) => {
           msg: `Username is Required`
         }
       }
-    }
+    },
+    role: {
+      type: DataTypes.STRING
+    },
   }, {
     hooks: {
       beforeCreate: (newUser => {
