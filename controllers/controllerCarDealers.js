@@ -22,7 +22,7 @@ class Controller {
 					let isValidPassword = bcrypt.compareSync(password, user.password)
 					if (isValidPassword) {
 						req.session.userId = user.id
-						return res.redirect('/cars')
+						return res.redirect(`/users/${user.id}`)
 					} else {
 						const error = `Invalid Username or Password`
 						return res.redirect(`/login?error=${error}`)

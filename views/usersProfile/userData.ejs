@@ -15,14 +15,15 @@
       </thead>
       <tbody>
           <tr>
-            <td><%= profile.fullName%> </td>
-            <td><%= profile.email%> </td>
-            <td><%= profile.phoneNumber%> </td>
-            <td><%= profile.gender%> </td>
-            <td><%= profile.formatedDate%> </td>
+            <td><%= user.Profile.fullName%> </td>
+            <td><%= user.email%> </td>
+            <td><%= user.Profile.phoneNumber%> </td>
+            <td><%= user.Profile.gender%> </td>
+            <td><%= user.Profile.formatedDate%> </td>
             <td> 
-              <a class="btn btn-warning" href="/users/<%= profile.UserId %>/profiles/<%= profile.id %>/edit" role="button">Edit</a>
-              <a class="btn btn-danger" href="/users/profiles/<%= profile.id %>/delete" role="button">Delete Account</a>
+              <a class="btn btn-warning" href="/users/<%= user.id %>/profiles/<%= user.Profile.id %>/edit" role="button">Edit</a>
+              <a class="btn btn-danger" href="/users/<%= user.id %>/delete" role="button">Delete Account</a>
+
             </td>
           </tr>
       </tbody>
