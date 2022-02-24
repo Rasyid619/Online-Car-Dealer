@@ -1,0 +1,57 @@
+
+<%- include('../layouts/header') %>
+<%- include('../layouts/navbar') %>
+<div class="container mb-3">
+    <h1>PROFILE FORM</h1>
+</div>
+<div class="container">
+    <form method="post">
+        <div class="container mb-3">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="firstName" name="firstName" aria-describedby="emailHelp">
+          </div>
+          <div class="container mb-3">
+            <label for="lastName" class="form-label">last Name</label>
+            <input type="text" class="form-control" id="lastName" name="lastName" aria-describedby="emailHelp">
+          </div>
+        <div class="container mb-3">
+          <label for="email" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="email" name="email" value="<%= user.email%> " aria-describedby="emailHelp">
+        </div>
+        <div class="container mb-3">
+            <label for="phoneNumber" class="form-label">Phone Number</label>
+            <input type="number" class="form-control" id="phoneNumber" name="phoneNumber" value="<% %> " aria-describedby="emailHelp">
+          </div>
+          <div class="container mb-3">
+            <label for="gender" class="form-label">Gender</label>
+            <select class="form-select" name="gender">
+                <option selected disabled>Choose your Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="others">Others</option>
+              </select>
+          </div>
+          <div class="container mb-3">
+            <label for="birthDate" class="form-label">Birth Date</label>
+            <input type="date" class="form-control" id="birthDate" name="birthDate" value="<% %> " aria-describedby="emailHelp">
+          </div>
+
+          <div class="container mb-3">
+            <label for="userId" class="form-label">User</label>
+            <select class="form-select" name="userId">
+                <option selected disabled>Choose your User Name</option>
+                <% user.forEach(element => { %>
+                  <option value="<%= element.id %>"><%= element.userName %></option>
+                <% }) %>
+              
+
+              </select>
+          </div>
+
+        <div class="container mb-3">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+</div>
+
+<%- include('../layouts/footer') %>
