@@ -8,7 +8,7 @@ class Controller {
     })
       .then(user => {
 
-        res.render('./usersProfile/allUsersersData', {
+        res.render('./usersProfile/allUserData', {
           user,
           title: 'Data User'
         })
