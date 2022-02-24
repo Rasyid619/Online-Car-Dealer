@@ -83,6 +83,71 @@ class Controller {
     
   }
 
+  static getEditFormProfiles(req,res){
+   console.log(req.params);
+
+    // Profile.findByPk(profileId)
+    // .then(profile => {
+    //   res.render('./profiles/profileForm',{profile,title: "Edit Profile"})
+    // })
+    // .catch((err) => {
+    //   res.send(err)
+    // })
+    
+  }
+
+  static postEditProfiles(req,res){
+    let {profileId} = req.params.profileId
+    let {firstName, lastName, phoneNumber, gender, birthDate, email} = req.body
+    let newProfile = {
+      firstName,
+      lastName,
+      phoneNumber,
+      gender,
+      birthDate,
+      email
+    }
+
+   Profile.update(newProfile, {
+      where: {
+        id: profileId
+      }
+    })
+    .then(() => {
+      res.redirect(`/users/profiles/${profileId}`)
+    })
+    .catch(err => {
+      res.send(err)
+    })
+  }
+  
+  static deleteAccount(req, res) {
+    
+    let {profileId} = req.params 
+
+    Profile.destroy({
+      where:{
+        id : profileId
+      }
+     
+    })
+    .then(() =>{
+    
+    })
+  
+    // Profile.findByPk()
+    //     .then(result=>{
+          
+    //         return result.destroy()
+    //     })
+    //     .then(()=>{
+    //         res.redirect(`/incubators/${idIncubator}`)
+    //     })
+    //     .catch(err=>{
+    //         res.send(err)
+    //     })
+  
+}
 }
 
 module.exports = Controller
