@@ -21,8 +21,8 @@
             <td><%= profile.gender%> </td>
             <td><%= profile.formatedDate%> </td>
             <td> 
-              <a class="btn btn-warning" href="" role="button">Edit</a>
-              <a class="btn btn-danger" href="" role="button">Delete Account</a>
+              <a class="btn btn-warning" href="/users/<%= profile.UserId %>/profiles/<%= profile.id %>/edit" role="button">Edit</a>
+              <a class="btn btn-danger" href="/users/profiles/<%= profile.id %>/delete" role="button">Delete Account</a>
             </td>
           </tr>
       </tbody>

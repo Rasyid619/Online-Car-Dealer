@@ -16,24 +16,24 @@
           </div>
         <div class="container mb-3">
           <label for="email" class="form-label">Email address</label>
-          <input type="email" class="form-control" id="email" name="email" value=" " >
+          <input type="email" class="form-control" id="email" name="email" value="<%= profile.email %> " >
         </div>
         <div class="container mb-3">
             <label for="phoneNumber" class="form-label">Phone Number</label>
-            <input type="number" class="form-control" id="phoneNumber" name="phoneNumber" value="" >
+            <input type="number" class="form-control" id="phoneNumber" name="phoneNumber" value="<%= profile.phoneNumber %>" >
           </div>
           <div class="container mb-3">
             <label for="gender" class="form-label">Gender</label>
             <select class="form-select" name="gender">
-                <option selected disabled>Choose your Gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="others">Others</option>
+              
+                <option value="male"<%= profile.gender === "male" ? "selected": "" %>>Male</option>
+                <option value="female" <%= profile.gender === "female" ? "selected": "" %>>Female</option>
+                <option value="others" <%= profile.gender === "others" ? "selected": "" %>>Others</option>
               </select>
           </div>
           <div class="container mb-3">
             <label for="birthDate" class="form-label">Birth Date</label>
-            <input type="date" class="form-control" id="birthDate" name="birthDate" value="" >
+            <input type="date" class="form-control" id="birthDate" name="birthDate" value="<%= profile.formatedDate %>" >
           </div>
 
         <div class="container mb-3">
