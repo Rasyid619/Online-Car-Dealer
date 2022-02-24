@@ -1,45 +1,53 @@
-
 <%- include('../layouts/header') %>
-<%- include('../layouts/navbar') %>
-<div class="container mb-3">
-    <h1>PROFILE FORM</h1>
-</div>
-<div class="container">
-    <form method="post">
+  <%- include('../layouts/navbar') %>
+    <div class="container mb-3">
+      <h1>PROFILE FORM</h1>
+    </div>
+    <div class="container">
+      <% if(error){ %>
+        <h5 style="color: red;">
+          <%= error %>
+        </h5>
+        <% } %>
+    </div>
+    <div class="container">
+      <form method="post">
         <div class="container mb-3">
-            <label for="firstName" class="form-label">First Name</label>
-            <input type="text" class="form-control" id="firstName" name="firstName" value="<%= user.Profile.firstName %>">
-          </div>
-          <div class="container mb-3">
-            <label for="lastName" class="form-label">last Name</label>
-            <input type="text" class="form-control" id="lastName" name="lastName" value="<%= user.Profile.lastName %>  ">
-          </div>
+          <label for="firstName" class="form-label">First Name</label>
+          <input type="text" class="form-control" id="firstName" name="firstName" value="<%= user.Profile.firstName %>">
+        </div>
+        <div class="container mb-3">
+          <label for="lastName" class="form-label">last Name</label>
+          <input type="text" class="form-control" id="lastName" name="lastName" value="<%= user.Profile.lastName %>  ">
+        </div>
         <div class="container mb-3">
           <label for="email" class="form-label">Email address</label>
-          <input type="email" class="form-control" id="email" name="email" value="<%= user.Profile.email %> " >
+          <input type="email" class="form-control" id="email" name="email" value="<%= user.Profile.email %> ">
         </div>
         <div class="container mb-3">
-            <label for="phoneNumber" class="form-label">Phone Number</label>
-            <input type="number" class="form-control" id="phoneNumber" name="phoneNumber" value="<%= user.Profile.phoneNumber %>" >
-          </div>
-          <div class="container mb-3">
-            <label for="gender" class="form-label">Gender</label>
-            <select class="form-select" name="gender">
-              
-                <option value="male"<%= user.Profile.gender === "male" ? "selected": "" %>>Male</option>
-                <option value="female" <%= user.Profile.gender === "female" ? "selected": "" %>>Female</option>
-                <option value="others" <%= user.Profile.gender === "others" ? "selected": "" %>>Others</option>
-              </select>
-          </div>
-          <div class="container mb-3">
-            <label for="birthDate" class="form-label">Birth Date</label>
-            <input type="date" class="form-control" id="birthDate" name="birthDate" value="<%= user.Profile.formatedDate %>" >
-          </div>
+          <label for="phoneNumber" class="form-label">Phone Number</label>
+          <input type="number" class="form-control" id="phoneNumber" name="phoneNumber"
+            value="<%= user.Profile.phoneNumber %>">
+        </div>
+        <div class="container mb-3">
+          <label for="gender" class="form-label">Gender</label>
+          <select class="form-select" name="gender">
+
+            <option value="male" <%=user.Profile.gender==="male" ? "selected" : "" %>>Male</option>
+            <option value="female" <%=user.Profile.gender==="female" ? "selected" : "" %>>Female</option>
+            <option value="others" <%=user.Profile.gender==="others" ? "selected" : "" %>>Others</option>
+          </select>
+        </div>
+        <div class="container mb-3">
+          <label for="birthDate" class="form-label">Birth Date</label>
+          <input type="date" class="form-control" id="birthDate" name="birthDate"
+            value="<%= user.Profile.formatedDate %>">
+        </div>
 
         <div class="container mb-3">
-            <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
         </div>
       </form>
-</div>
+    </div>
 
-<%- include('../layouts/footer') %>
+    <%- include('../layouts/footer') %>
