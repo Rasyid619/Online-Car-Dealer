@@ -25,7 +25,6 @@ class Controller {
       include : Profile
     })
     .then(user => {
-      // res.send(user)
       res.render('./usersProfile/userData', {title: 'User Data', user})
     })
 
@@ -33,24 +32,28 @@ class Controller {
 
 
   static getRegisterForm(req, res) {
+    const { error } = req.query
     User.findAll()
       .then((user) => {
-        res.render('./usersProfile/registerForm', { user, title: 'Add Profile' })
+        res.render('./usersProfile/registerForm', { user, error, title: 'Add Profile' })
       })
   }
 
   static postRegisterForm(req, res) {
     let { userName, email, password, confirmPassword, firstName, lastName, phoneNumber, gender, birthDate , role} = req.body
-    console.log(req.boy)
-    
-    let newUser = {
-      userName,
-      email,
-      password,
-      role
-    }
+    console.log(req.body)
 
-    User.create(newUser)
+    if(password !== confirmPassword) {
+      let error = `Password and confirm password does not match`
+      res.redirect(`/register?error=${error}`)
+    } else {
+      let newUser = {
+        userName,
+        email,
+        password,
+        role
+      }
+      User.create(newUser)
       .then((user) => {
         let newProfile = {
           firstName,
@@ -67,9 +70,9 @@ class Controller {
         res.redirect('/login')
       })
       .catch(err => {
-        console.log(err)
         res.send(err)
       })
+    } 
   }
 
   static getEditFormProfiles(req,res){
@@ -83,8 +86,7 @@ class Controller {
     })
     .catch((err) => {
       res.send(err)
-    })
-    
+    }) 
   }
 
 
@@ -107,7 +109,6 @@ class Controller {
       }
     })
     .then(() => {
-      // res.send(`berhasil edit`)
       res.redirect(`/users/${userId}`)
     })
     .catch(err => {
@@ -127,8 +128,7 @@ class Controller {
     .then(() =>{
       res.redirect('/login')
     })
-  
-}
+  }
 }
 
 module.exports = Controller

@@ -2,6 +2,11 @@
   <%- include('../layouts/navbar') %>
     <div class="container mb-3">
       <h1>REGISTER FORM</h1>
+      <div class="container mb3-3">
+        <% if(error) { %>
+          <h5 style="color:red"><%= error %></h5>
+          <% } %>
+      </div>
     </div>
     <div class="container">
       <form method="post">

@@ -40,6 +40,7 @@ class Controller {
 					let isValidPassword = bcrypt.compareSync(password, user.password)
 					if (isValidPassword) {
 						req.session.userId = user.id
+						req.session.role = user.role
 						return res.redirect(`/users/${user.id}`)
 					} else {
 						const error = `Invalid Username or Password`
@@ -52,15 +53,17 @@ class Controller {
 			})
 	}
 
-	static getCarCategories(req, res) {
-		Category.findAll()
-			.then(result => {
-				res.send(result)
+		static getLogOut(req, res) {
+			req.session.destroy(err => {
+				if(err) {
+					res.send(err)
+				} else {
+					res.redirect('/login')
+				}
 			})
-			.catch((err) => {
-				res.send(err)
-			})
+		}
 	}
+
 
 	static getCarDealers(req, res) {
 		Car.findAll({
@@ -202,13 +205,6 @@ class Controller {
 			})
 	}
 
-	static getRestockForm(req, res) {
-
-	}
-
-
-
-
 	static restockCar(req, res) {
 		const {carId} = req.params
 		Car.findByPk(carId)
@@ -229,10 +225,6 @@ class Controller {
 				res.send(err)
 			})
 	}
-
-
 }
-
-
 
 module.exports = Controller

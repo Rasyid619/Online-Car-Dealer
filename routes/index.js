@@ -3,6 +3,7 @@ const Controller = require('../controllers/controllerCarDealers')
 const ControllerUser = require('../controllers/controllerUserProfile');
 const routerCarDealers = require('./routerCarDealers')
 const routerUserProfile = require('./routerUserProfile')
+const {isLoggedIn} = require('../middlewares/auth');
 
 
 
@@ -12,17 +13,11 @@ router.post('/register', ControllerUser.postRegisterForm)
 router.get('/login', Controller.getLogin)
 router.post('/login', Controller.postLogin)
 
-router.use((req, res, next) => {
-  if(!req.session.userId) {
-    const error = `Please Login First!`
-    res.redirect(`/login?error=${error}`)
+router.get('/logout', isLoggedIn, Controller.getLogOut)
 
-  }
-  next()
-})
 
-router.use('/cars', routerCarDealers)
-router.use('/users', routerUserProfile)
+router.use('/cars', isLoggedIn, routerCarDealers)
+router.use('/users', isLoggedIn, routerUserProfile)
 
 
 module.exports = router     
