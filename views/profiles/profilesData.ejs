@@ -2,30 +2,29 @@
 <%- include('../layouts/navbar') %>
 
 <div class="container">
-  <table class="table table-success table-striped">
+  <table class="table table-success table-striped" border="3">
       <thead>
         <tr>
-          <th scope="col">No.</th>
-          <th scope="col">First Name</th>
-          <th scope="col">Last Name</th>
+          <th scope="col">Name</th>
           <th scope="col">Email</th>
           <th scope="col">Phone Number</th>
           <th scope="col">Gender</th>
           <th scope="col">Birth Date</th>
+          <th scope="col">Action</th>
         </tr>
       </thead>
       <tbody>
-        <% profile.forEach((profile,i) => { %>
           <tr>
-            <td><%= i+1 %> </td>
-            <td><%= profile.firstName%> </td>
-            <td><%= profile.lastName%> </td>
+            <td><%= profile.fullName%> </td>
             <td><%= profile.email%> </td>
             <td><%= profile.phoneNumber%> </td>
             <td><%= profile.gender%> </td>
-            <td><%= profile.birthDate%> </td>
+            <td><%= profile.formatedDate%> </td>
+            <td> 
+              <a class="btn btn-warning" href="" role="button">Edit</a>
+              <a class="btn btn-danger" href="" role="button">Delete Account</a>
+            </td>
           </tr>
-        <% }) %>
       </tbody>
     </table>
 </div>
