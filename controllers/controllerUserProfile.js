@@ -1,48 +1,108 @@
-const{Profile, User } = require('../models')
+const e = require('express')
+const {
+    Profile,
+    User
+} = require('../models')
 
 
-class Controller{
+class Controller {
 
 
-    static getUser(req,res){
-        User.findAll()
-          .then(result =>{
-              res.send(result)
-          })
-          .catch((err) =>{
-              res.send(err)
-          })
+    static getUser(req, res) {
+        User.findAll({
+                include: Profile
+            })
+            .then(user => {
+
+                res.render('./users/usersData', {
+                    user,
+                    title: 'Data User'
+                })
+            })
+            .catch((err) => {
+                res.send(err)
+            })
     }
 
-    static getUserProfiles(req,res){
+    static getUserProfiles(req, res) {
         Profile.findAll()
-          .then(result =>{
-              res.send(result)
-          })
-          .catch((err) =>{
-              res.send(err)
-          })
+            .then(profile => {
+                res.render('./profiles/profilesData', {
+                    profile,
+                    title: 'Data profile'
+                })
+            })
+            .catch((err) => {
+                res.send(err)
+            })
     }
 
-    static getRegisterForm(req,res){
-        res.render('./users/registerForm',{title: 'Register Form'})
+    static getRegisterForm(req, res) {
+        res.render('./users/registerForm', {
+            title: 'Register Form'
+        })
     }
 
-    static postRegisterForm(req,res){
-        let {userName, email, password} = req.body
+    static postRegisterForm(req, res) {
+        let {
+            userId
+        } = req.params
+        let {
+            userName,
+            email,
+            password
+        } = req.body
         let newuser = {
             userName,
             email,
             password
         }
+        if (!userId) {
+            return User.create(newuser)
+                .then(result => {
+                    res.redirect(`/users/register/add/profiles/`)
+                })
+                .catch((err) => {
+                    res.send(err)
+                })
+        }else{
+            res.redirect('/')
+        }
 
-        User.create(newuser)
-        .then(result =>{
+    }
+
+    static getAddProfileForm(req, res) {
+       
+       User.findAll()
+       .then((user)=>{
+            res.render('./profiles/profileForm',{user, title: 'Add Profile'})
+       })
+       .catch((err) => {
+        res.send(err)
+    })
+
+    }
+    static postAddProfileForm(req,res){
+        console.log(req.body);
+        const {firstName, lastName, email, phoneNumber, gender, birthDate, userId} = req.body
+        const newProfile ={
+            firstName,
+            lastName,
+            email,
+            phoneNumber,
+            gender,
+            birthDate,
+            UserId: +userId
+        }
+
+        Profile.create(newProfile)
+        .then(()=>{
             res.redirect('/')
         })
-        .catch((err) =>{
+        .catch((err) => {
             res.send(err)
         })
+
     }
 }
 
