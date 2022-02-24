@@ -1,6 +1,5 @@
 const { Car, Category, User } = require('../models')
 const bcrypt = require('bcryptjs');
-const e = require('express');
 
 class Controller {
 
@@ -10,17 +9,20 @@ class Controller {
 
 	static getLogin(req, res) {
 		const { error } = req.query
-		res.render('login', { title: 'Login', error})
+		res.render('login', { title: 'Login Page', error})
 	}
 
 	static postLogin(req, res) {
 		const { userName, password } = req.body
-		User.findOne({ where: { userName } })
+		User.findOne({ 
+			where: { userName }
+		})
 			.then(user => {
 				if (user) {
-					const isValidPassword = bcrypt.compareSync(password, user.password)
+					let isValidPassword = bcrypt.compareSync(password, user.password)
 					if (isValidPassword) {
-						return res.redirect('/')
+						req.session.userId = user.id
+						return res.redirect('/cars')
 					} else {
 						const error = `Invalid Username or Password`
 						return res.redirect(`/login?error=${error}`)
