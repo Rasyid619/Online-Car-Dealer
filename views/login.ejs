@@ -1,6 +1,10 @@
 <%- include('layouts/header') %>
 	<%- include('layouts/navbar') %>
 
+
+		<div class="container">
+			<h1>Login </h1>
+		</div>
 		<div class="container text-center">
 			<% if(error) { %>
 				<p style="color: red;"> <%= error %> </p>
@@ -17,6 +21,7 @@
 					<input type="password" class="form-control" id="password" name="password" placeholder="eg: Aaaaaaa13">
 				</div>
 				<button type="submit" class="btn btn-success">Submit</button>
+				<a class="btn btn-primary" href="/users/register" role="button">Register Now!</a>
 			</form>
 		</div>
 
