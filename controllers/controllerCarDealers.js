@@ -7,6 +7,7 @@ const bcrypt = require('bcryptjs');
 const {
 	Op
 } = require('sequelize')
+const formatRupiah = require('../helpers/converToRupiah')
 
 
 class Controller {
@@ -80,7 +81,7 @@ class Controller {
 		.then(car => {
 			res.render('./carDealers/cards', {
 				car,
-				title: 'Cars Category'
+				title: 'Cars Category', formatRupiah
 			})
 		})
 		.catch((err) => {
@@ -97,7 +98,7 @@ class Controller {
 		.then(car => {
 			res.render('./carDealers/carDetails', {
 				car,
-				title: 'Cars Details'
+				title: 'Cars Details',formatRupiah
 			})
 		})
 		.catch((err) => {

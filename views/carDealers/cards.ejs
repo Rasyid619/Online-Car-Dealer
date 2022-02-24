@@ -13,11 +13,11 @@
         <div class="card" style="width: 18rem ;">
           <img src="<%= car.imageUrl %> " class="card-img-top hj" alt="profile_pp">
           <div class="card-body">
-            <h5 class="card-title text-center"><%=car.name%></h5>
-            <p class="card-text text-center" ><%= car.condition %></p>
-            <p class="card-text text-center" ><%= car.price %></p>
-            <p class="card-text text-center" ><%= car.Category.name %></p>
-            <p class="card-text text-center" ><%= car.stock %></p>
+            <h5 class="card-title text-center">Car Name: <%=car.name%></h5>
+            <p class="card-text text-center" >Condition: <%= car.condition %></p>
+            <p class="card-text text-center" >Price: <%= formatRupiah(car.price) %></p>
+            <p class="card-text text-center" >Category: <%= car.Category.name %></p>
+            <p class="card-text text-center" >Stock: <%= car.stock %></p>
             <div class="d-grid gap-2">
               <a class="btn btn-info" href="cars/categories/<%= car.id %>">Show Details</a>
               <a class="btn btn-outline-primary" href="cars/categories/<%= car.id %>/buy">Buy</a>

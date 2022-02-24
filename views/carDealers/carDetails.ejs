@@ -13,7 +13,7 @@
             <h5 class="card-title text-center">Car Name: <%=car.name%></h5>
             <h6 class="card-text text-center" >Description: <%= car.description %></h6>
             <h6 class="card-text text-center" >Condition: <%= car.condition %></h6>
-            <h6 class="card-text text-center" >Price: <%= car.price %></h6>
+            <h6 class="card-text text-center" >Price: <%= formatRupiah(car.price) %></h6>
             <h6 class="card-text text-center" >Stock: <%= car.stock %></p>
             <div class="d-grid gap-2">
               <a class="btn btn-outline-primary" href="/cars/categories/<%= car.id %>/buy">Buy</a>

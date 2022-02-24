@@ -29,7 +29,11 @@ module.exports = (sequelize, DataTypes) => {
       }
       return `${year}-${month}-${date}`
   }
+  
   }
+
+  let yearbefore = new Date().getFullYear() - 17
+
   Profile.init({
     firstName: {
       type: DataTypes.STRING,
@@ -84,6 +88,10 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: {
           args: true,
           msg: `Phone Number is Required`
+        },
+        len:{
+          args:[9,12],
+          msg: "Phone Number must at least have 9 characters and max 12 characters"
         }
       }
     },
@@ -112,6 +120,10 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: {
           args: true,
           msg: `Date is Required`
+        },
+        isBefore:{
+          args:`${yearbefore}`,
+          msg:"Must at least 17 years old"
         }
       }
     },
