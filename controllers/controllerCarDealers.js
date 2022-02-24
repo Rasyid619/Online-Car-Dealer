@@ -1,7 +1,7 @@
 const {
 	Car,
 	Category,
-	User
+	User, Profile
 } = require('../models')
 const bcrypt = require('bcryptjs');
 const {
@@ -13,9 +13,9 @@ const formatRupiah = require('../helpers/converToRupiah')
 class Controller {
 
 	static getHome(req, res) {
-		res.render('index', {
-			title: 'Home'
-		})
+	
+		res.render('index', {title: 'Home'})
+	
 	}
 
 	static getLogin(req, res) {
@@ -26,6 +26,7 @@ class Controller {
 			title: 'Login Page',
 			error
 		})
+		
 	}
 
 	static postLogin(req, res) {
@@ -53,6 +54,9 @@ class Controller {
 					const error = `Invalid Username or Password`
 					return res.redirect(`/login?error=${error}`)
 				}
+			})
+			.catch((err)=>{
+				res.send(err)
 			})
 	}
 
@@ -121,16 +125,6 @@ class Controller {
 	
 	static postAddCarForm(req, res) {
 	let {name, description, price, stock, imageUrl, condition, CategoryId } = req.body
-	// console.log(req.body);
-	let newCar = {
-		name,
-		description,
-		price,
-		stock,
-		imageUrl,
-		condition,
-		CategoryId
-	}
 	
 	Car.create({
 		name: name,

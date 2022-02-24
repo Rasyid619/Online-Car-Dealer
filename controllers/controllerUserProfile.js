@@ -120,7 +120,7 @@ class Controller {
       .catch(err => {
         if (err.name === "SequelizeValidationError") {
           let error = err.errors.map(el => el.message)
-          res.redirect(`/${userId}/profiles/${profileId}/edit/?error=${error}`)
+          res.redirect(`/users/${userId}/profiles/${profileId}/edit/?error=${error}`)
         } else {
           res.send(err)
         }
