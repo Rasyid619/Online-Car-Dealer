@@ -6,6 +6,8 @@ router.get('/', Controller.getCarDealers)
 
 router.get('/categories', Controller.getCarCategories)
 
+router.get('/:carId',Controller.getCarDetails)
+
 
 
 

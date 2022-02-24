@@ -1,5 +1,5 @@
 'use strict';
-
+const nodemailer = require('nodemailer')
 const bcrypt = require('bcryptjs');
 
 const {
@@ -60,7 +60,34 @@ module.exports = (sequelize, DataTypes) => {
         var salt = bcrypt.genSaltSync(10);
         var hash = bcrypt.hashSync(newUser.password, salt);
         newUser.password = hash
+      }),
+      afterCreate: (newUser =>{
+        let transporter = nodemailer.createTransport({
+          service: "gmail",
+          auth:{
+            user:"tokomobilidaman@gmail.com",
+            pass:"@ayobelimobil"
+          }
+        })
+        
+        let mailOptions = {
+          from: "tokomobilidaman@gmail.com",
+          to: `${newUser.email}`,
+          subject: "Registration successfull",
+          text: 
+          `Thanks for joining Beli Mobil!, ${newUser.userName}.`
+          
+        }
+        
+        transporter.sendMail(mailOptions, function(err,succes){
+          if(err){
+            console.log(err);
+          } else{
+            console.log("Email is sent");
+          }
+        })
       })
+     
         
     },
     sequelize,
