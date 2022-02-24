@@ -55,6 +55,20 @@ class Controller {
             res.send(err)
         })
     }
+
+	static getCarDetails(req,res){
+	
+		let {carId} = req.params
+		Car.findByPk(carId)
+        .then(car =>{
+            res.render('./carDealers/carDetails', {car, title: 'Cars Category'})
+        })
+        .catch((err) =>{
+            res.send(err)
+        })
+	}
+
+
 	}
 
   
