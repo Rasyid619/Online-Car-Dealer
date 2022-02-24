@@ -6,7 +6,7 @@
     "stock": 50,
     "condition": "new",
     "CategoryId": 1,
-    "urlImage": "https://apollo-singapore.akamaized.net/v1/files/sx8d0xqg2qpt-ID/image;s=780x0;q=60"
+    "imageUrl": "https://apollo-singapore.akamaized.net/v1/files/sx8d0xqg2qpt-ID/image;s=780x0;q=60"
   },
   {
     "name" : "L-300",
@@ -15,7 +15,7 @@
     "stock": 50,
     "condition": "new",
     "CategoryId": 2,
-    "urlImage": "https://apollo-singapore.akamaized.net/v1/files/b9h9m8w5n2ox1-ID/image;s=780x0;q=60"
+    "imageUrl": "https://apollo-singapore.akamaized.net/v1/files/b9h9m8w5n2ox1-ID/image;s=780x0;q=60"
     
   },
   {
@@ -25,7 +25,7 @@
     "stock": 50,
     "condition": "new",
     "CategoryId": 3,
-    "urlImage": "https://id.fcgapi.com/image/inspection-images/ebafb4ad-43eb-4861-afed-645cd7df7eb6/61461?watermark=false&country=id&cache=true"
+    "imageUrl": "https://id.fcgapi.com/image/inspection-images/ebafb4ad-43eb-4861-afed-645cd7df7eb6/61461?watermark=false&country=id&cache=true"
   },
   {
     "name": "CJ-7",
@@ -34,7 +34,7 @@
     "stock": 50,
     "condition": "new",
     "CategoryId": 4,
-    "urlImage": "https://imgx.gridoto.com/crop/0x0:1062x593/700x465/photo/gridoto/2018/05/23/2008853514.jpg"
+    "imageUrl": "https://imgx.gridoto.com/crop/0x0:1062x593/700x465/photo/gridoto/2018/05/23/2008853514.jpg"
   },
   {
     "name": "CRV",
@@ -43,7 +43,7 @@
     "stock": 50,
     "condition": "new",
     "CategoryId": 5,
-    "urlImage": "https://assets.promediateknologi.com/crop/0x0:0x0/750x500/photo/hops/2020/07/2021-Honda-CR-V-6-1024x669.jpg"
+    "imageUrl": "https://assets.promediateknologi.com/crop/0x0:0x0/750x500/photo/hops/2020/07/2021-Honda-CR-V-6-1024x669.jpg"
   },
   {
     "name": "Innova",
@@ -52,6 +52,6 @@
     "stock": 50,
     "condition": "new",
     "CategoryId": 6,
-    "urlImage": "https://images.autofun.co.id/file1/55cb6b0b952e4ea898f07ef28472890d_800.jpg"
+    "imageUrl": "https://images.autofun.co.id/file1/55cb6b0b952e4ea898f07ef28472890d_800.jpg"
   }
 ]
