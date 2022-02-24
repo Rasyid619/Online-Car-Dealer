@@ -1,13 +1,13 @@
 const router = require('express').Router();
-const Controller = require('../controllers/controller')
+const Controller = require('../controllers/controllerCarDealers')
 const routerCarDealers = require('./routerCarDealers')
 const routerUserProfile = require('./routerUserProfile')
 
 
 
 router.get('/', Controller.getHome)
-router.get('/carDealers', routerCarDealers)
-router.get('/user', routerUserProfile)
+router.use('/car', routerCarDealers)
+router.use('/users', routerUserProfile)
 
 
 module.exports = router     
