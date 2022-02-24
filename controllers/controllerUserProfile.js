@@ -23,6 +23,27 @@ class Controller{
               res.send(err)
           })
     }
+
+    static getRegisterForm(req,res){
+        res.render('./users/registerForm',{title: 'Register Form'})
+    }
+
+    static postRegisterForm(req,res){
+        let {userName, email, password} = req.body
+        let newuser = {
+            userName,
+            email,
+            password
+        }
+
+        User.create(newuser)
+        .then(result =>{
+            res.redirect('/')
+        })
+        .catch((err) =>{
+            res.send(err)
+        })
+    }
 }
 
 module.exports = Controller

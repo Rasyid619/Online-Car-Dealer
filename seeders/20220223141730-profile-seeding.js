@@ -3,7 +3,7 @@ const fs = require('fs');
 
 
 module.exports = {
-  async up (queryInterface, Sequelize) {
+   up (queryInterface, Sequelize) {
     let data = JSON.parse(fs.readFileSync('./data/profiles.json', 'utf-8'))
     data.forEach(el => {
       el.createdAt = new Date()
@@ -12,7 +12,7 @@ module.exports = {
    return queryInterface.bulkInsert('Profiles', data)
   },
 
-  async down (queryInterface, Sequelize) {
+   down (queryInterface, Sequelize) {
     
     return queryInterface.bulkDelete('Profiles', null, {});
   }

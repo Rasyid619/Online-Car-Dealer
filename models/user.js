@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     
     static associate(models) {
-      User.belongsTo(models.Profile, {foreignKey: 'ProfileId'})
+      // User.hasOne(models.Profile, {foreignKey: 'UserId'})
     }
   }
   User.init({
@@ -35,16 +35,6 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: {
           args: true,
           msg: `Password is Required`
-        }
-      }
-    },
-    ProfileId:  {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      validate: {
-        notNull: {
-          args: true,
-          msg: `ProfileId is Required`
         }
       }
     },
