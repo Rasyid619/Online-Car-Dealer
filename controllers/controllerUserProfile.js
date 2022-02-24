@@ -1,102 +1,74 @@
-const {Profile, User} = require('../models')
+const { Profile, User } = require('../models')
 
 
 class Controller {
-
-
-    static getUser(req, res) {
-        User.findAll({
-                include: Profile
-            })
-            .then(user => {
-
-                res.render('./users/usersData', {
-                    user,
-                    title: 'Data User'
-                })
-            })
-            .catch((err) => {
-                res.send(err)
-            })
-    }
-
-    static getUserProfiles(req, res) {
-        Profile.findAll()
-            .then(profile => {
-                res.render('./profiles/profilesData', {
-                    profile,
-                    title: 'Data profile'
-                })
-            })
-            .catch((err) => {
-                res.send(err)
-            })
-    }
-
-    static getRegisterForm(req, res) {
-        res.render('./users/registerForm', {
-            title: 'Register Form'
-        })
-    }
-
-    static postRegisterForm(req, res) {
-        let { userId } = req.params
-        let { userName, email, password, confirmPassword } = req.body
-        let newuser = {
-            userName,
-            email,
-            password
-        }
-        // if(password != confirmPassword) {
-        //     res.redirect('/register')
-        // }
-
-        if (!userId) {
-            return User.create(newuser)
-                .then(result => {
-                    res.redirect(`/users/register/add/profiles/`)
-                })
-                .catch((err) => {
-                    res.send(err)
-                })
-        }else{
-            res.redirect('/')
-        }
-
-    }
-
-    static getAddProfileForm(req, res) {
-       User.findAll()
-       .then((user)=>{
-            res.render('./profiles/profileForm',{user, title: 'Add Profile'})
-       })
-       .catch((err) => {
-        res.send(err)
+  static getUser(req, res) {
+    User.findAll({
+      include: Profile
     })
+      .then(user => {
 
+        res.render('./users/usersData', {
+          user,
+          title: 'Data User'
+        })
+      })
+      .catch((err) => {
+        res.send(err)
+      })
+  }
+
+  static getUserProfiles(req, res) {
+    let { profileId } = req.params
+    Profile.findByPk(profileId)
+      .then(profile => {
+        res.render('./profiles/profilesData', {
+          profile,
+          title: 'Data profile'
+        })
+      })
+      .catch((err) => {
+        res.send(err)
+      })
+  }
+
+  static getRegisterForm(req, res) {
+    User.findAll()
+      .then((user) => {
+        res.render('./users/registerForm', { user, title: 'Add Profile' })
+      })
+  }
+
+  static postRegisterForm(req, res) {
+    let { userName, email, password, confirmPassword, firstName, lastName, phoneNumber, gender, birthDate } = req.body
+
+    let newUser = {
+      userName,
+      email,
+      password
     }
-    static postAddProfileForm(req,res){
-        console.log(req.body);
-        const {firstName, lastName, email, phoneNumber, gender, birthDate, userId} = req.body
-        const newProfile ={
-            firstName,
-            lastName,
-            email,
-            phoneNumber,
-            gender,
-            birthDate,
-            UserId: +userId
+    User.create(newUser)
+      .then((user) => {
+        let newProfile = {
+          firstName,
+          lastName,
+          phoneNumber,
+          gender,
+          birthDate,
+          email,
+          UserId: user.id
         }
+        return Profile.create(newProfile)
+      })
+      .then(() => {
+        res.redirect('/users')
+      })
+      .catch(err => {
+        console.log(err)
+        res.send(err)
+      })
+  }
 
-        Profile.create(newProfile)
-        .then(()=>{
-            res.redirect('/')
-        })
-        .catch((err) => {
-            res.send(err)
-        })
-
-    }
 }
 
 module.exports = Controller
