@@ -47,6 +47,7 @@ class Controller {
       email,
       password
     }
+  }
 
     static postAddProfileForm(req,res){
     User.create(newUser)
