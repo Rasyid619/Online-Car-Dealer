@@ -6,6 +6,11 @@ const routerUserProfile = require('./routerUserProfile')
 
 
 router.get('/', Controller.getHome)
+router.get('/login', Controller.getLogin)
+router.post('/login', Controller.postLogin)
+
+
+
 router.use('/car', routerCarDealers)
 router.use('/users', routerUserProfile)
 
