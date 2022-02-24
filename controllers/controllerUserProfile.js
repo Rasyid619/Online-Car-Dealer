@@ -1,8 +1,4 @@
-const e = require('express')
-const {
-    Profile,
-    User
-} = require('../models')
+const {Profile, User} = require('../models')
 
 
 class Controller {
@@ -44,19 +40,17 @@ class Controller {
     }
 
     static postRegisterForm(req, res) {
-        let {
-            userId
-        } = req.params
-        let {
-            userName,
-            email,
-            password
-        } = req.body
+        let { userId } = req.params
+        let { userName, email, password, confirmPassword } = req.body
         let newuser = {
             userName,
             email,
             password
         }
+        // if(password != confirmPassword) {
+        //     res.redirect('/register')
+        // }
+
         if (!userId) {
             return User.create(newuser)
                 .then(result => {
@@ -72,7 +66,6 @@ class Controller {
     }
 
     static getAddProfileForm(req, res) {
-       
        User.findAll()
        .then((user)=>{
             res.render('./profiles/profileForm',{user, title: 'Add Profile'})
@@ -83,7 +76,7 @@ class Controller {
 
     }
     static postAddProfileForm(req,res){
-        console.log(req.body);
+      
         const {firstName, lastName, email, phoneNumber, gender, birthDate, userId} = req.body
         const newProfile ={
             firstName,
