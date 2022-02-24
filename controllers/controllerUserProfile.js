@@ -47,6 +47,8 @@ class Controller {
       email,
       password
     }
+
+    static postAddProfileForm(req,res){
     User.create(newUser)
       .then((user) => {
         let newProfile = {
@@ -68,6 +70,7 @@ class Controller {
         res.send(err)
       })
   }
+
 
 }
 

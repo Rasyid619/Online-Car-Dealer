@@ -1,0 +1,18 @@
+<%- include('../layouts/header') %>
+  <%- include('../layouts/navbar') %>
+    <div class="d-flex flex-wrap bd-highlight gap-5">
+      <% car.forEach(car => { %>
+      <div class="card" style="width: 18rem;">
+        <img src="<%= car.imageUrl %> " class="card-img-top" alt="profile_pp">
+        <div class="card-body">
+          <h5 class="card-title text-center"><%=car.name%></h5>
+          <p class="card-text text-center" ><%= car.description %> </p>
+          <p class="card-text text-center" ><%= car.condition %></p>
+          <p class="card-text text-center" ><%= car.price %></p>
+          <p class="card-text text-center" ><%= car.Category.name %></p>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+   
+   <%- include('../layouts/footer') %>
