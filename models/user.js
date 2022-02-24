@@ -44,7 +44,17 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         notNull: {
           args: true,
-          msg: `First Name is Required`
+          msg: `ProfileId is Required`
+        }
+      }
+    },
+    userName:  {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          args: true,
+          msg: `Username is Required`
         }
       }
     }
