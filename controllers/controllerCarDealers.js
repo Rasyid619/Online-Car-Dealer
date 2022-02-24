@@ -65,28 +65,28 @@ class Controller {
 			}
 		})
 	}
+
 	static getCarDealers(req, res) {
-	Car.findAll({
-		include: Category,
-		where: {
-			stock: {
-				[Op.gt]: 0
-			},
-	
-		},
-		order: [
-			['id', 'asc']
-		]
-	})
-		.then(car => {
-			res.render('./carDealers/cards', {
-				car,
-				title: 'Cars Category', formatRupiah
+		const {search} = req.query
+			let options = {
+				include: Category,
+				where: {
+					stock: {
+						[Op.gt]: 0
+					}
+				},
+				order: [
+					['id', 'asc']
+				]
+			}
+			if(search){
+					options.where.name = {[Op.iLike]: `%${search}%`}
+			}
+			Car.findAll(options)
+			.then(car => {
+					res.render('./carDealers/cards', {car, formatRupiah , title: 'Car Catalog'})
 			})
-		})
-		.catch((err) => {
-			res.send(err)
-		})
+			.catch(err => res.send(err))
 	}
 	
 	static getCarDetails(req, res) {
@@ -120,16 +120,8 @@ class Controller {
 	}
 	
 	static postAddCarForm(req, res) {
-	let {
-		name,
-		description,
-		price,
-		stock,
-		imageUrl,
-		condition,
-		CategoryId
-	} = req.body
-	console.log(req.body);
+	let {name, description, price, stock, imageUrl, condition, CategoryId } = req.body
+	// console.log(req.body);
 	let newCar = {
 		name,
 		description,
@@ -206,25 +198,26 @@ class Controller {
 	}
 	
 	static restockCar(req, res) {
-	const { carId } = req.params
-	Car.findByPk(carId)
-		.then(car => {
-	
-			return Car.update({
-				stock: car.stock + 1
-			}, {
-				where: {
-					id: carId
-				}
+		const { carId } = req.params
+		Car.findByPk(carId)
+			.then(car => {
+		
+				return Car.update({
+					stock: car.stock + 1
+				}, {
+					where: {
+						id: carId
+					}
+				})
 			})
-		})
-		.then(() => {
-			res.redirect('/cars')
-		})
-		.catch((err) => {
-			res.send(err)
-		})
-	}
+			.then(() => {
+				res.redirect('/cars')
+			})
+			.catch((err) => {
+				res.send(err)
+			})
+		}
+
 }
 
 

@@ -1,5 +1,5 @@
 const isLoggedIn = function(req, res, next) {
-  console.log(req.session.userId, req.session.role)
+  // console.log(req.session.userId, req.session.role)
   if(!req.session.userId) {
     const error = `Please Login First!`
     res.redirect(`/login?error=${error}`)
