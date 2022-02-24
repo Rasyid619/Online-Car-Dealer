@@ -19,9 +19,11 @@ class Controller{
      }
 
      static getCarCategories(req,res){
-        Category.findAll()
-        .then(result =>{
-            res.send(result)
+        Car.findAll({
+            include: Category
+        })
+        .then(car =>{
+            res.render('./carDealers/cards', {car})
         })
         .catch((err) =>{
             res.send(err)

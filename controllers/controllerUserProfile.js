@@ -97,7 +97,7 @@ class Controller {
 
         Profile.create(newProfile)
         .then(()=>{
-            res.redirect('/')
+            res.redirect('/users')
         })
         .catch((err) => {
             res.send(err)

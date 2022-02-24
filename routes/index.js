@@ -6,7 +6,7 @@ const routerUserProfile = require('./routerUserProfile')
 
 
 router.get('/', Controller.getHome)
-router.use('/car', routerCarDealers)
+router.use('/cars', routerCarDealers)
 router.use('/users', routerUserProfile)
 
 
