@@ -19,14 +19,14 @@ class Controller {
   }
 
   static getUserById(req, res) {
-    let {userId} = req.params
+    let { userId } = req.params
 
     User.findByPk(userId, {
-      include : Profile
+      include: Profile
     })
-    .then(user => {
-      res.render('./usersProfile/userData', {title: 'User Data', user})
-    })
+      .then(user => {
+        res.render('./usersProfile/userData', { title: 'User Data', user })
+      })
 
   }
 
@@ -40,10 +40,10 @@ class Controller {
   }
 
   static postRegisterForm(req, res) {
-    let { userName, email, password, confirmPassword, firstName, lastName, phoneNumber, gender, birthDate , role} = req.body
-    console.log(req.body)
+    let { userName, email, password, confirmPassword, firstName, lastName, phoneNumber, gender, birthDate, role } = req.body
 
-    if(password !== confirmPassword) {
+
+    if (password !== confirmPassword) {
       let error = `Password and confirm password does not match`
       res.redirect(`/register?error=${error}`)
     } else {
@@ -54,46 +54,52 @@ class Controller {
         role
       }
       User.create(newUser)
-      .then((user) => {
-        let newProfile = {
-          firstName,
-          lastName,
-          phoneNumber,
-          gender,
-          birthDate,
-          email,
-          UserId: user.id
-        }
-        return Profile.create(newProfile)
-      })
-      .then(() => {
-        res.redirect('/login')
-      })
-      .catch(err => {
-        res.send(err)
-      })
-    } 
+        .then((user) => {
+          let newProfile = {
+            firstName,
+            lastName,
+            phoneNumber,
+            gender,
+            birthDate,
+            email,
+            UserId: user.id
+          }
+          return Profile.create(newProfile)
+        })
+        .then(() => {
+          res.redirect('/login')
+        })
+        .catch(err => {
+          if (err.name === "SequelizeValidationError") {
+            let error = err.errors.map(el => el.message)
+            res.redirect(`/register?error=${error}`)
+          } else {
+            res.send(err)
+          }
+        })
+    }
   }
 
-  static getEditFormProfiles(req,res){
-    let {userId, profileId} = req.params 
+  static getEditFormProfiles(req, res) {
+    let { userId, profileId } = req.params
+    let {error} = req.query
     User.findByPk(userId, {
       include: Profile,
-      where: {id: profileId}
+      where: { id: profileId }
     })
-    .then(user => {
-      res.render('./usersProfile/profileForm',{user,title: "Edit Profile"})
-    })
-    .catch((err) => {
-      res.send(err)
-    }) 
+      .then(user => {
+        res.render('./usersProfile/profileForm', { user,error, title: "Edit Profile" })
+      })
+      .catch((err) => {
+        res.send(err)
+      })
   }
 
 
-  static postEditProfiles(req,res){
-    let { userId ,profileId} = req.params
+  static postEditProfiles(req, res) {
+    let { userId, profileId } = req.params
     console.log(profileId)
-    let {firstName, lastName, phoneNumber, gender, birthDate, email} = req.body
+    let { firstName, lastName, phoneNumber, gender, birthDate, email } = req.body
     let newProfile = {
       firstName,
       lastName,
@@ -103,31 +109,36 @@ class Controller {
       email
     }
 
-   Profile.update(newProfile, {
+    Profile.update(newProfile, {
       where: {
         id: profileId
       }
     })
-    .then(() => {
-      res.redirect(`/users/${userId}`)
-    })
-    .catch(err => {
-      res.send(err)
-    })
+      .then(() => {
+        res.redirect(`/users/${userId}`)
+      })
+      .catch(err => {
+        if (err.name === "SequelizeValidationError") {
+          let error = err.errors.map(el => el.message)
+          res.redirect(`/${userId}/profiles/${profileId}/edit/?error=${error}`)
+        } else {
+          res.send(err)
+        }
+      })
   }
-  
+
   static deleteAccount(req, res) {
-    
-    let {userId} = req.params 
+
+    let { userId } = req.params
 
     User.destroy({
-      where:{
-        id : userId
-      } 
+      where: {
+        id: userId
+      }
     })
-    .then(() =>{
-      res.redirect('/login')
-    })
+      .then(() => {
+        res.redirect('/login')
+      })
   }
 }
 

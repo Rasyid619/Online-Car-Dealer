@@ -68,7 +68,6 @@ class Controller {
 
 	static getCarDealers(req, res) {
 		const {search} = req.query
-		console.log(req.query)
 			let options = {
 				include: Category,
 				where: {
