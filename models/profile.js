@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   class Profile extends Model {
     
     static associate(models) {
-      Profile.hasOne(models.User, {foreignKey: 'ProfileId'})
+      // Profile.belongsTo(models.User, {foreignKey: 'UserId'})
     }
   }
   Profile.init({
@@ -93,6 +93,9 @@ module.exports = (sequelize, DataTypes) => {
           msg: `Date is Required`
         }
       }
+    },
+    UserId:  {
+      type: DataTypes.INTEGER
     }
   }, {
     sequelize,

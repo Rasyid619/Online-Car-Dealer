@@ -5,7 +5,7 @@ class Controller{
 
 
     static getHome(req,res){
-        res.render('index')
+        res.render('index',{title: 'Home'})
      }
  
      static getCarDealers(req,res){
