@@ -12,6 +12,23 @@ module.exports = (sequelize, DataTypes) => {
     get fullName (){
       return `${this.firstName} ${this.lastName}`
     }
+
+    get formatedDate() {
+      let year = this.birthDate.getFullYear()
+      let month;
+      let date;
+      if (this.birthDate.getMonth()+1 < 10) {
+          month = `0${this.birthDate.getMonth()+1}`   
+      } else {
+          month = this.birthDate.getMonth()+1
+      }
+      if (this.birthDate.getDate() < 10) {
+          date = `0${this.birthDate.getDate()}`   
+      } else {
+          date = this.birthDate.getDate()
+      }
+      return `${year}-${month}-${date}`
+  }
   }
   Profile.init({
     firstName: {
