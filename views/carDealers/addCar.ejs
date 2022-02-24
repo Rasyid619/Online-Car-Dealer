@@ -1,0 +1,60 @@
+<%- include('../layouts/header') %>
+  <%- include('../layouts/navbar') %>
+    <div class="container mb-3">
+      <h1>CAR FORM</h1>
+    </div>
+    <div class="container">
+      <form method="post">
+        <div class="container mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" name="name" >
+        </div>
+        <div class="container mb-3">
+          <label for="description" class="form-label">Description</label>
+          <input type="text" class="form-control" id="description" name="description" >
+        </div>
+        <div class="container mb-3">
+          <label for="price" class="form-label">Price</label>
+          <input type="number" class="form-control" id="price" name="price">
+        </div>
+        <div class="container mb-3">
+            <label for="stock" class="form-label">Stock</label>
+            <input type="number" class="form-control" id="stock" name="stock">
+          </div>
+          <div class="container mb-3">
+            <label for="imageUrl" class="form-label">Image Url</label>
+            <input type="text" class="form-control" id="imageUrl" name="imageUrl" >
+          </div>
+        <div class="container mb-3">
+          <label for="condition" class="form-label">Condition</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="condition" value="new" id="condition">
+            <label class="form-check-label" for="condition" >
+              new
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="condition" value="used" id="condition" checked>
+            <label class="form-check-label" for="condition">
+             used
+            </label>
+          </div>
+          <br>
+          <div class="container mb-3">
+            <label for="Category" class="form-label">Category</label>
+              <select class="form-select" name="CategoryId">
+                <option selected disabled>Open this select menu</option>
+                <% category.forEach(category => { %>
+                    <option value="<%= category.id %>"><%= category.name %></option>
+                <% }) %>
+              
+              </select>
+          </div>
+          <br>
+        <div class="container mb-3">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+
+    <%- include('../layouts/footer') %>
