@@ -1,0 +1,29 @@
+[
+  {
+  "firstName":"Angele",
+  "lastName":"Hugland",
+  "email":"ahugland0@posterous.com",
+  "phoneNumber":"335-509-9055",
+  "gender":"Female",
+  "birthDate":" 1994/7/13",
+  "UserId":1
+},
+{
+  "firstName":"Ambros",
+  "lastName":"Rudsdell",
+  "email":"arudsdell1@ifeng.com",
+  "phoneNumber":"933-397-9993",
+  "gender":"Female",
+  "birthDate":"1986/2/24" ,
+  "UserId":2
+},
+{
+  "firstName":"Millard",
+  "lastName":"McReidy",
+  "email":"mmcreidy2@engadget.com",
+  "phoneNumber":"771-504-2887",
+  "gender":"Male",
+  "birthDate":"1974/11/9",
+  "UserId":3
+  }
+]

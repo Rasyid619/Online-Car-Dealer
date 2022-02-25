@@ -1,0 +1,32 @@
+<%- include('../layouts/header') %>
+<%- include('../layouts/navbar') %>
+
+<div class="container">
+  <table class="table table-success table-striped">
+      <thead>
+        <tr>
+          <th scope="col">No.</th>
+          <th scope="col">Name</th>
+          <th scope="col">User Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Phone Number</th>
+          <th scope="col">Gender</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% console.log(user) %>
+        <% user.forEach((user,i) => { %>
+          <tr>
+            <td><%= i+1 %> </td>
+            <td><%= user.Profile.fullName  %> </td>
+            <td><%= user.userName %> </td>
+            <td><%= user.email %> </td>
+            <td><%= user.Profile.phoneNumber %> </td>
+            <td><%= user.Profile.gender %> </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+</div>
+
+  <%- include('../layouts/footer') %>

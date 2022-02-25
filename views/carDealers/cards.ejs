@@ -1,0 +1,38 @@
+<%- include('../layouts/header') %>
+  <%- include('../layouts/navbar') %>
+
+<div class="container text-center">  
+<h1>Car Catalog</h1><br>
+<div class="container">
+  <form class="d-flex">
+    <input class="form-control me-2" type="search" placeholder="Search" name="search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+  </form>
+  <br><br>
+</div>
+<a class="btn btn-secondary btn-lg" href="/cars/add">Add New Car</a> <br><br>
+<a class="btn btn-secondary btn-lg" href="/cars/empty">Out of Stock Car</a> <br>
+<br>
+</div>
+    <div class="container">
+      <div class="d-flex flex-wrap bd-highlight gap-5">
+        <% car.forEach(car => { %>
+        <div class="card" style="width: 18rem ;">
+          <img src="<%= car.imageUrl %> " class="card-img-top hj" alt="profile_pp">
+          <div class="card-body">
+            <h5 class="card-title text-center">Car Name: <%=car.name%></h5>
+            <p class="card-text text-center" >Condition: <%= car.condition %></p>
+            <p class="card-text text-center" >Price: <%= formatRupiah(car.price) %></p>
+            <p class="card-text text-center" >Category: <%= car.Category.name %></p>
+            <p class="card-text text-center" >Stock: <%= car.stock %></p>
+            <div class="d-grid gap-2">
+              <a class="btn btn-info" href="cars/categories/<%= car.id %>">Show Details</a>
+              <a class="btn btn-outline-primary" href="cars/categories/<%= car.id %>/buy">Buy</a>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+   
+   <%- include('../layouts/footer') %>

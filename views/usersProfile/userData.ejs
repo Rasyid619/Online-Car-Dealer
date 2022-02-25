@@ -1,0 +1,33 @@
+<%- include('../layouts/header') %>
+<%- include('../layouts/navbar') %>
+
+<div class="container">
+  <table class="table table-success table-striped" border="3">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Phone Number</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Birth Date</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td><%= user.Profile.fullName%> </td>
+            <td><%= user.email%> </td>
+            <td><%= user.Profile.phoneNumber%> </td>
+            <td><%= user.Profile.gender%> </td>
+            <td><%= user.Profile.formatedDate%> </td>
+            <td> 
+              <a class="btn btn-warning" href="/users/<%= user.id %>/profiles/<%= user.Profile.id %>/edit" role="button">Edit</a>
+              <a class="btn btn-danger" href="/users/<%= user.id %>/delete" role="button">Delete Account</a>
+
+            </td>
+          </tr>
+      </tbody>
+    </table>
+</div>
+
+<%- include('../layouts/footer') %>

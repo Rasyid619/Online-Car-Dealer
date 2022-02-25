@@ -1,0 +1,57 @@
+[
+  {
+    "name" : "BMW M3",
+    "description": "As with the new M4 coupe, the M3 sedan features a twin-turbo 3.0-liter inline-six. The normal version sends 473 horsepower and 406 pound-feet of torque to the rear wheels. A six-speed manual is the only transmission offered. ... Every M3 also features adaptive dampers and adjustable brake-pedal feel.",
+    "price": 819000000,
+    "stock": 50,
+    "condition": "new",
+    "CategoryId": 1,
+    "imageUrl": "https://apollo-singapore.akamaized.net/v1/files/sx8d0xqg2qpt-ID/image;s=780x0;q=60"
+  },
+  {
+    "name" : "L-300",
+    "description": "The L300, a new Van from Mitsubishi comes in 1 variants. The top variant of L300 is powered by the Exceed 2.2 Diesel Euro 4 a 2200 cc, 4 cylinder Diesel engine that fires 98 hp of power and 200 Nm torque. The 3 seater L300 Exceed 2.2 Diesel Euro 4 5-Speed comes with Manual transmission. For added safety are provided central locking & power door locks.",
+    "price": 221000000,
+    "stock": 50,
+    "condition": "new",
+    "CategoryId": 2,
+    "imageUrl": "https://apollo-singapore.akamaized.net/v1/files/b9h9m8w5n2ox1-ID/image;s=780x0;q=60"
+    
+  },
+  {
+    "name": "Alphard",
+    "description": "The Toyota Alphard has 1 Diesel Engine and 1 Petrol Engine on offer. The Diesel engine is 2362 cc while the Petrol engine is 2995 cc . It is available with Automatic transmission. ... The Alphard is a 7 seater 4 cylinder car and has length of, width of and a wheelbase of .",
+    "price": 1113000000,
+    "stock": 50,
+    "condition": "new",
+    "CategoryId": 3,
+    "imageUrl": "https://id.fcgapi.com/image/inspection-images/ebafb4ad-43eb-4861-afed-645cd7df7eb6/61461?watermark=false&country=id&cache=true"
+  },
+  {
+    "name": "CJ-7",
+    "description": "The Jeep CJ-7 featured a wheelbase 10 inches longer than that of the CJ-5, with its curved side entry cutouts partially squared up to accommodate hinged doors. The other main difference between CJ-5 and CJ-7 was to the chassis, which consisted of two parallel longitudinal main c-section rails. To help improve vehicle handling and stability, the rear section of the chassis stepped out to allow the springs and shock absorbers to be mounted closer to the outside of the body. It was introduced for the 1976 model year, with 379,299 built during 11 years of production.",
+    "price": 180000000,
+    "stock": 50,
+    "condition": "new",
+    "CategoryId": 4,
+    "imageUrl": "https://imgx.gridoto.com/crop/0x0:1062x593/700x465/photo/gridoto/2018/05/23/2008853514.jpg"
+  },
+  {
+    "name": "CRV",
+    "description": "The Honda CR-V is a compact crossover SUV manufactured by the Japanese automaker Honda since 1996 and introduced in the North American market in 1997. It uses the Civic platform with an SUV body design. The CR-V is Honda's mid-range utility vehicle, slotting between the smaller HR-V and the larger North American market Passport/Pilot. Honda states CR-V stands for (Comfortable Runabout Vehicle), while the term (Compact Recreational) Vehicle is used in a British car review article that was republished by Honda",
+    "price": 510000000,
+    "stock": 50,
+    "condition": "new",
+    "CategoryId": 5,
+    "imageUrl": "https://assets.promediateknologi.com/crop/0x0:0x0/750x500/photo/hops/2020/07/2021-Honda-CR-V-6-1024x669.jpg"
+  },
+  {
+    "name": "Innova",
+    "description": "The Toyota Innova is a compact MPV manufactured by the Japanese automaker Toyota since 2004. It is first produced in Indonesia under supervision by Toyota-Astra Motor since 2004 and has been manufactured in other countries as well. Its official name in Indonesia is Toyota Kijang Innova, while for other countries it is simply called Innova (also as Innova Crysta in India and Thailand since the second generation).",
+    "price": 355000000,
+    "stock": 50,
+    "condition": "new",
+    "CategoryId": 6,
+    "imageUrl": "https://images.autofun.co.id/file1/55cb6b0b952e4ea898f07ef28472890d_800.jpg"
+  }
+]
